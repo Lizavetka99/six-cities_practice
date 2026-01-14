@@ -1,4 +1,5 @@
 import Logo from '../../components/logo/logo.tsx';
+import {AppRoute} from "../../const.ts";
 
 function LoginScreen(): JSX.Element {
   return (
@@ -42,7 +43,7 @@ function LoginScreen(): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <a className="locations__item-link" href={AppRoute.Root}>
                 <span>Amsterdam</span>
               </a>
             </div>
