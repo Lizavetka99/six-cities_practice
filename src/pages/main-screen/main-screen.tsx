@@ -11,7 +11,7 @@ function MainScreen(): JSX.Element {
   const offers = useAppSelector((state) => state.Offer.offers) ?? [];
   const activeCity = useAppSelector((state) => state.Offer.activeCity);
   const [chosenId, setChosenId] = useState<string | null>(null);
-
+  const offersByCity = offers.filter((offer) => offer.city.name === activeCity.name);
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -23,7 +23,7 @@ function MainScreen(): JSX.Element {
           </section>
         </div>
         <div className="cities">
-          {offers.length === 0 && (
+          {offersByCity.length === 0 && (
             <div className="cities__places-container cities__places-container--empty container">
               <section className="cities__no-places">
                 <div className="cities__status-wrapper tabs__content">
@@ -34,21 +34,21 @@ function MainScreen(): JSX.Element {
               <div className="cities__right-section"></div>
             </div>
           )}
-          {offers.length > 0 && (
+          {offersByCity.length > 0 && (
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+                <b className="places__found">{offersByCity.length} places to stay in {activeCity.name}</b>
                 <SortingOptions/>
-                {offers && offers.length > 0 &&
-                  <PlaceCardList offers={offers} setChosenId={setChosenId} isFavoriteList={false}/>}
+                {offersByCity && offersByCity.length > 0 &&
+                  <PlaceCardList offers={offersByCity} setChosenId={setChosenId} isFavoriteList={false}/>}
               </section>
               <div className="cities__right-section">
-                {offers.length > 0 && (
+                {offersByCity.length > 0 && (
                   <Map
                     chosenId={chosenId}
-                    city={offers[0].city}
-                    offers={offers}
+                    city={activeCity}
+                    offers={offersByCity}
                   />
                 )}
               </div>

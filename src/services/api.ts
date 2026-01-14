@@ -3,7 +3,7 @@ import {getToken} from './token.ts';
 import {AppRoute} from '../const.ts';
 import browserHistory from '../browser-history.ts';
 
-const BACKEND_URL = 'https://14.design.htmlacademy.pro/spec/six-cities#get-/six-cities';
+const BACKEND_URL = 'https://14.design.htmlacademy.pro/six-cities';
 const REQUEST_TIMEOUT = 5000;
 
 export const createAPI = (): AxiosInstance => {

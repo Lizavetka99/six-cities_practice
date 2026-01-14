@@ -2,6 +2,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import {reducer} from './reducer.ts';
 import {createAPI} from '../services/api.ts';
 import {redirect} from './middleware/middleware.ts';
+import 'leaflet/dist/leaflet.css';
 
 export const api = createAPI();
 

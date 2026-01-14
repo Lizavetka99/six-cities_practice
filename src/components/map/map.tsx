@@ -4,7 +4,6 @@ import {CityProps} from '../../types/city.ts';
 import useMap from '../../hooks/use-map.tsx';
 import {OfferPreviewProps} from '../../types/offer.ts';
 
-
 type MapProps = {
   chosenId: string | null;
   city: CityProps;
@@ -51,9 +50,9 @@ function Map(props: MapProps): JSX.Element {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, offers, chosenId]);
+  }, [map, offers, chosenId, mapRef]);
 
-  return <section className="cities__map map" ref={mapRef}></section>;
+  return <section className="cities__right-section" ref={mapRef}></section>;
 }
 
 export default Map;
